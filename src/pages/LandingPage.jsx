@@ -1,8 +1,9 @@
 import React from 'react'
+import Header from '../components/Header'
 
 const LandingPage = () => {
   return (
-    <div className='bg-red-400'> Hello World</div>
+    <Header/>
   )
 }
 
