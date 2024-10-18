@@ -208,19 +208,26 @@ function AddActivity() {
         </div>
 
         {/* Terms and Conditions Checkbox */}
-        <div className="mb-4 flex items-center">
-          {" "}
-          {/* Flexbox for checkbox and label */}
-          <input
-            type="checkbox"
-            id="terms"
-            className="mr-2" // Margin to right for spacing
-            checked={termsAgreed} // Bind state to checkbox
-            onChange={() => setTermsAgreed(!termsAgreed)} // Toggle state on change
-          />
-          <label htmlFor="terms" className="text-gray-700 font-bold">
-            I agree to the Terms and Conditions
-          </label>
+        <div className="mb-4">
+          <div className="flex items-center">
+            {/* Flexbox for checkbox and label */}
+            <input
+              type="checkbox"
+              id="terms"
+              className="mr-2" // Margin to right for spacing
+              checked={termsAgreed} // Bind state to checkbox
+              onChange={() => setTermsAgreed(!termsAgreed)} // Toggle state on change
+            />
+            <label htmlFor="terms" className="text-gray-700 font-bold">
+              I agree to the Terms and Conditions
+            </label>
+          </div>
+          <p className="text-gray-700">
+            {" "}
+            {/* Removed margin */}
+            You must agree to the Terms and Conditions before signing up for an
+            account.
+          </p>
         </div>
 
         {/* Submit Button */}

@@ -1,8 +1,31 @@
-import React from "react";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import React, { useState } from "react"; // Importing React and useState
+import Footer from "../components/Footer"; // Importing Footer component
+import Header from "../components/Header"; // Importing Header component
 
 const SignUp = () => {
+  // State variables for form inputs
+  const [firstName, setFirstName] = useState(""); // State for first name
+  const [lastName, setLastName] = useState(""); // State for last name
+  const [countryCode, setCountryCode] = useState(""); // State for country code
+  const [phoneNumber, setPhoneNumber] = useState(""); // State for phone number
+  const [email, setEmail] = useState(""); // State for email
+  const [password, setPassword] = useState(""); // State for password
+  const [termsAgreed, setTermsAgreed] = useState(false); // State for terms agreement
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent default form submission
+    // Handle signup logic here, e.g., API call
+    console.log("Sign-up data submitted:", {
+      firstName,
+      lastName,
+      countryCode,
+      phoneNumber,
+      email,
+      password,
+      termsAgreed,
+    });
+  };
+
   return (
     <div>
       <Header />
@@ -27,24 +50,32 @@ const SignUp = () => {
 
           {/* Right Side - Form */}
           <div className="md:w-1/2 bg-white rounded-lg shadow-lg p-8">
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="flex flex-col md:flex-row gap-4">
                 <input
                   type="text"
                   placeholder="First Name"
                   className="w-full p-3 border rounded-md"
+                  value={firstName} // Bind state to input
+                  onChange={(e) => setFirstName(e.target.value)} // Update state on change
                 />
                 <input
                   type="text"
                   placeholder="Last Name"
                   className="w-full p-3 border rounded-md"
+                  value={lastName} // Bind state to input
+                  onChange={(e) => setLastName(e.target.value)} // Update state on change
                 />
               </div>
               <div className="flex items-center gap-4">
                 {/* Country Code Dropdown */}
                 <div className="flex items-center gap-4">
                   <div className="relative">
-                    <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-3 pr-8 rounded-md leading-tight focus:outline-none focus:border-gray-500">
+                    <select
+                      value={countryCode} // Bind state to select
+                      onChange={(e) => setCountryCode(e.target.value)} // Update state on change
+                      className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-3 pr-8 rounded-md leading-tight focus:outline-none focus:border-gray-500"
+                    >
                       <option value="+62">🇮🇩 +62</option>
                       <option value="+1">🇺🇸 +1</option>
                       <option value="+44">🇬🇧 +44</option>
@@ -67,28 +98,43 @@ const SignUp = () => {
                   type="text"
                   placeholder="08XX-XXXX-XXXX"
                   className="w-full p-3 border rounded-md"
+                  value={phoneNumber} // Bind state to input
+                  onChange={(e) => setPhoneNumber(e.target.value)} // Update state on change
                 />
               </div>
               <input
                 type="email"
                 placeholder="Email"
                 className="w-full p-3 border rounded-md"
+                value={email} // Bind state to input
+                onChange={(e) => setEmail(e.target.value)} // Update state on change
               />
               <input
                 type="password"
                 placeholder="Password"
                 className="w-full p-3 border rounded-md"
+                value={password} // Bind state to input
+                onChange={(e) => setPassword(e.target.value)} // Update state on change
               />
 
-              <div className="flex items-start">
-                <input type="checkbox" id="terms" className="mt-1" />
-                <label htmlFor="terms" className="ml-2 text-gray-700">
-                  I agree to the{" "}
-                  <a href="#" className="text-blue-500">
-                    Terms and Conditions
-                  </a>
-                  .
-                </label>
+              <div className="mb-4">
+                <div className="flex items-center">
+                  {/* Flexbox for checkbox and label */}
+                  <input
+                    type="checkbox"
+                    id="terms"
+                    className="mr-2" // Margin to right for spacing
+                    checked={termsAgreed} // Bind state to checkbox
+                    onChange={() => setTermsAgreed(!termsAgreed)} // Toggle state on change
+                  />
+                  <label htmlFor="terms" className="text-gray-700 font-bold">
+                    I agree to the Terms and Conditions
+                  </label>
+                </div>
+                <p className="text-gray-700">
+                  You must agree to the Terms and Conditions before signing up
+                  for an account.
+                </p>
               </div>
 
               <button

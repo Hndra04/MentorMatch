@@ -1,8 +1,21 @@
-import React from "react";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import React, { useState } from "react"; // Importing React and useState
+import Footer from "../components/Footer"; // Importing Footer component
+import Header from "../components/Header"; // Importing Header component
 
 const LoginPage = () => {
+  // State variables for email and password
+  const [email, setEmail] = useState(""); // State for email
+  const [password, setPassword] = useState(""); // State for password
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent default form submission
+    // Handle login logic here, e.g., API call
+    console.log("Login data submitted:", {
+      email,
+      password,
+    });
+  };
+
   return (
     <div>
       <Header />
@@ -11,7 +24,9 @@ const LoginPage = () => {
           {/* Left Side - Text and Logo */}
           <div className="md:w-1/2 text-center md:text-left mb-6 md:mb-0">
             <h1 className="text-6xl font-bold mb-2">Welcome back.</h1>
-            <h2 className="text-3xl font-semibold mb-4">Let's continue our mission.</h2>
+            <h2 className="text-3xl font-semibold mb-4">
+              Let's continue our mission.
+            </h2>
             {/* Logo */}
             <div className="flex justify-center md:justify-center">
               <img
@@ -24,18 +39,24 @@ const LoginPage = () => {
 
           {/* Right Side - Form */}
           <div className="md:w-1/2 bg-white rounded-lg shadow-lg p-8">
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {" "}
+              {/* Added onSubmit handler */}
               <input
                 type="email"
                 placeholder="Email"
                 className="w-full p-3 border rounded-md"
+                value={email} // Bind state to input
+                onChange={(e) => setEmail(e.target.value)} // Update state on change
               />
               <input
                 type="password"
                 placeholder="Password"
                 className="w-full p-3 border rounded-md"
+                value={password} // Bind state to input
+                onChange={(e) => setPassword(e.target.value)} // Update state on change
               />
-              <a href="#" className="text-blue-500 text-xs">
+              <a href="forgot" className="text-blue-500 text-xs">
                 I forgot my password
               </a>
               <button
@@ -44,10 +65,11 @@ const LoginPage = () => {
               >
                 LOGIN
               </button>
-
               <p className="text-center text-gray-600">
                 No Account Yet?{" "}
-                <a href="/login-page" className="text-blue-500">
+                <a href="/signup-page" className="text-blue-500">
+                  {" "}
+                  {/* Corrected link to sign up page */}
                   Sign up for an account >
                 </a>
               </p>
