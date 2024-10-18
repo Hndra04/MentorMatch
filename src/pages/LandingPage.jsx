@@ -3,6 +3,13 @@ import Header from '../components/Header'
 import ImageGallery from '../components/ImageGallery';
 import Jumbotron from '../components/Jumbotron';
 import Partners from '../components/Partners';
+import React from 'react'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
+import LoginPage from './LoginPage'
+import SignUp from './SignUp'
+import AddActivity from './AddActivity'
+
 
 const LandingPage = () => {
   useEffect(() => {
