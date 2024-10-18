@@ -9,6 +9,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import NewPassword from './pages/NewPassword';
 
 function App() {
+
   return (
     <Router>
       <Routes>

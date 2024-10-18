@@ -10,7 +10,5 @@ const LandingPage = () => {
     <div className='bg-red-400'>    
       <AddActivity />
     </div>
-  )
-}
 
 export default LandingPage
